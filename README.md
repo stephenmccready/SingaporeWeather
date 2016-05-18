@@ -1,4 +1,6 @@
 # SingaporeWeather
-2 Hour Singapore Map and 24 hour forecast. Derived from XML feeds from the Singapore National Environment Agency.
+2 Hour Singapore Weather Map and 24 hour forecast. 
 
-Example at: http://stephenmccready.com/singweather/
+Derived from XML feeds from the Singapore National Environment Agency.
+
+See http://stephenmccready.com/singweather/
