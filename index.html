@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head profile="http://www.stephenmccready.com/SingWeather">
+    <link rel="icon" type="image/png" href="http://www.stephenmccready.com/SingWeather/favicon.ico">
+  <title>Singapore Weather</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+  <link rel="stylesheet" href="css/singweather.css">
+</head>
+<body>
+
+  <div class="container-fluid" id="container-head">
+    <h4>Singapore Weather Data</h4>
+    <h5>From the National Environment Agency</h5>
+    <h5 id="mainHeader"></h5>
+  </div>
+  
+  <div class="container-fluid" id="pageContainer">
+    <div id="map-container">
+      <div id="twentyFourHourForeCast"></div>
+      <div id="map-panel"></div>
+      <div id="map-canvas"></div>
+    </div>
+  </div>
+
+  <div id="FourDayForecastContainer" class="container-fluid clearfix">
+      <div class="col-sm-12 FourDayForecast">4 Day Island-Wide Forecast</div>
+      <div class="col-sm-3 FourDayForecastDay" id="FourDay1"></div>
+      <div class="col-sm-3 FourDayForecastDay" id="FourDay2"></div>
+      <div class="col-sm-3 FourDayForecastDay" id="FourDay3"></div>
+      <div class="col-sm-3 FourDayForecastDay" id="FourDay4"></div>
+  </div>
+  
+  <script src="js/singweather.js" ></script>
+
+</body>
+</html>
