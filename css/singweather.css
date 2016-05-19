@@ -44,9 +44,7 @@ html, body {
     }
     
     #pageContainer {height: 550px;}
-    
     #map-panel img {width:25px; height: 25px;}
-    
     .legendItem {float: left; clear: both;}
 }
 
@@ -55,9 +53,6 @@ html, body {
 
 #FourDayForecastContainer {text-align: center; font-size: 1.25em; float: left;}
 #FourDayForecastContainer img {width:100px; height: 100px;}
-
-.PSI {font-size: 1.5em; padding: 1.5em 0 .75em 0;}
-#PSIContainer {text-align: center; font-size: 1.25em; float: left; width: 100%;}
 
 @media screen and (max-width: 800px) {
     #pageContainer {height: 825px;}
@@ -151,9 +146,3 @@ html, body {
   background: -moz-linear-gradient(right, #00e600, #80ff80); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, #00e600 , #80ff80); /* Standard syntax */
 }
-
-.airQualityGood {color: #479b02;}
-.airQualityModerate {color: #006fa1;}
-.airQualityUnhealthy {color: #e7b60d;}
-.airQualityVery unhealthy {color: #ea8522;}
-.airQualityHazardous {color: #d60000;}
