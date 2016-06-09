@@ -16,14 +16,14 @@ var mapOptions = {
 };
 var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 var currentTimeRange="";
-var apikeyref="";
+var apikeyref="781CF461BB6606ADEA01E0CAF8B352745D7D53A4EBE4FA32";
 //            ^^
 // Put your Singapore NEA API key in the above variable
 // Apply for a key at https://www.nea.gov.sg/api
 
 // Abbreviation of the weather forecast. Maintain a count of each one displayed for later use in the map icon legend
-var BR=0,CL=0,DR=0,FA=0,FG=0,FN=0,FW=0,HG=0,HR=0,HS=0,HT=0,HZ=0,LH=0,LR=0,LS=0,OC=0,PC=0
-    ,PN=0,PS=0,RA=0,SH=0,SK=0,SN=0,SR=0,SS=0,SU=0,SW=0,TL=0,WC=0,WD=0,WF=0,WR=0,WS=0;
+var BR=0,CL=0,DR=0,FA=0,FG=0,FN=0,FW=0,HG=0,HR=0,HS=0,HT=0,HZ=0,LH=0,LR=0,LS=0,OC=0,PC=0,
+PN=0,PS=0,RA=0,SH=0,SK=0,SN=0,SR=0,SS=0,SU=0,SW=0,TL=0,WC=0,WD=0,WF=0,WR=0,WS=0;
 
 // Array of months used in later date formatting
 var monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -134,7 +134,7 @@ function loadTwentyFourHourForeCast() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-	loadTwentyFourHourForeCastData(xhttp)
+        loadTwentyFourHourForeCastData(xhttp);
     } else {
 	if (xhttp.readyState == 4 && xhttp.status == 401) {
 	    alert('Error in retreiving 24 hour weather forecast. ('+xhttp.status+')');
@@ -156,7 +156,7 @@ function loadTwentyFourHourForeCastData(xml) {
     // The 24 hour forecast has a general forecast for the whole of Singapore
     var forecast = xmlDoc.getElementsByTagName('wxmain')[0].childNodes[0].nodeValue;
 //    var icon = "<img src='img/"+forecast+".png' />";
-    var desc = getForeCastDesc(forecast);
+//    var desc = getForeCastDesc(forecast);
     
     var unit = "&deg;";
     switch (xmlDoc.getElementsByTagName('temperature')[0].getAttribute('unit')) {
@@ -193,8 +193,8 @@ function loadTwentyFourHourForeCastData(xml) {
     timeRange=timeRange.replace(/ pm/g,'pm');
     timeRange=timeRange.replace(todayDayMonth,'');
     timeRange=timeRange.replace(tmrwDayMonth,'');
-    var rad = '<div class="radio"><label><input type="radio" name="radioTimePeriod" id="radioTimePeriod" value="TwentyFourHourForeCast0"> '+timeRange+'</input></label></div>';
-    var radioBtn = $(rad);
+    rad = '<div class="radio"><label><input type="radio" name="radioTimePeriod" id="radioTimePeriod" value="TwentyFourHourForeCast0"> '+timeRange+'</input></label></div>';
+    radioBtn = $(rad);
     radioBtn.appendTo('#map-panel');
     
     timeRange = xmlDoc.getElementsByTagName('timePeriod')[1].childNodes[0].nodeValue;
@@ -202,8 +202,8 @@ function loadTwentyFourHourForeCastData(xml) {
     timeRange=timeRange.replace(/ pm/g,'pm');
     timeRange=timeRange.replace(todayDayMonth,'');
     timeRange=timeRange.replace(tmrwDayMonth,'');
-    var rad = '<div class="radio"><label><input type="radio" name="radioTimePeriod" id="radioTimePeriod" value="TwentyFourHourForeCast1"> '+timeRange+'</input></label></div>';
-    var radioBtn = $(rad);
+    rad = '<div class="radio"><label><input type="radio" name="radioTimePeriod" id="radioTimePeriod" value="TwentyFourHourForeCast1"> '+timeRange+'</input></label></div>';
+    radioBtn = $(rad);
     radioBtn.appendTo('#map-panel');
     
     timeRange = xmlDoc.getElementsByTagName('timePeriod')[2].childNodes[0].nodeValue;
@@ -211,8 +211,8 @@ function loadTwentyFourHourForeCastData(xml) {
     timeRange=timeRange.replace(/ pm/g,'pm');
     timeRange=timeRange.replace(todayDayMonth,'');
     timeRange=timeRange.replace(tmrwDayMonth,'');
-    var rad = '<div class="radio"><label><input type="radio" name="radioTimePeriod" id="radioTimePeriod" value="TwentyFourHourForeCast2"> '+timeRange+'</input></label></div>';
-    var radioBtn = $(rad);
+    rad = '<div class="radio"><label><input type="radio" name="radioTimePeriod" id="radioTimePeriod" value="TwentyFourHourForeCast2"> '+timeRange+'</input></label></div>';
+    radioBtn = $(rad);
     radioBtn.appendTo('#map-panel');
 
     // The 24 hour forecast has the forecast for 5 regions in Singapore (as of 13th May 2016)    
@@ -224,7 +224,7 @@ function loadTwentyFourHourForeCastData(xml) {
     var centralLatLng= new google.maps.LatLng(1.367965, 103.814706);    
     
     //  24 hour forecast - Current time period
-    var forecast=xmlDoc.getElementsByTagName('wxeast')[0].childNodes[0].nodeValue;
+    forecast=xmlDoc.getElementsByTagName('wxeast')[0].childNodes[0].nodeValue;
     addMarker(eastLatLng,'East Singapore',forecast,'TwentyFourHourForeCast0');
     forecast=xmlDoc.getElementsByTagName('wxwest')[0].childNodes[0].nodeValue;
     addMarker(westLatLng,'West Singapore',forecast,'TwentyFourHourForeCast0');
@@ -314,15 +314,15 @@ function loadFourDayForeCast() {
 	    load4DayForecastData(xhttp);
 	} else {
 	    if (xhttp.readyState == 4 && xhttp.status == 401) {
-		alert('Error in retreiving 2 hour weather forecast. ('+xhttp.status+')');
+		alert('Error in retreiving four day weather forecast. ('+xhttp.status+')');
 	    } else {
 		if (xhttp.readyState == 4 && xhttp.status == 404) {
-		    alert('2 hour weather forecast is not currently available. Please try again later. ('+xhttp.status+')');
+		    alert('Four day weather forecast is not currently available. Please try again later. ('+xhttp.status+')');
 		}
 	    }
 	}
   };
-  var url="http://www.nea.gov.sg/api/WebAPI/?dataset=4days_outlook&keyref="+apikeyref;
+  var url="http://www.nea.gov.sg/api/WebAPI?dataset=4days_outlook&keyref="+apikeyref;
   xhttp.open("GET", url, true);
   xhttp.send();
 }
@@ -393,7 +393,9 @@ function load4DayForecastData(xml) {
     $("#FourDay4").append("<div class='wind clearfix'><b>Wind:</b> "+xmlDoc.getElementsByTagName('wind')[3].getAttribute('direction')+" "+xmlDoc.getElementsByTagName('wind')[3].getAttribute('speed')+"mph</div>");
 
 // Under Development    
-//    loadHeavyRainWarning();
+    if(0===1) {
+        loadHeavyRainWarning();
+    }
 }
 
 function loadHeavyRainWarning() {
@@ -404,11 +406,11 @@ function loadHeavyRainWarning() {
 	    loadHeavyRainWarningData(xhttp);
 	} else {
 	    if (xhttp.readyState == 4 && xhttp.status == 401) {
-		alert('Error in retreiving the Heavy Rain Warning. ('+xhttp.status+')');
+            alert('Error in retreiving the Heavy Rain Warning. ('+xhttp.status+')');
 	    } else {
-		if (xhttp.readyState == 4 && xhttp.status == 404) {
-		    alert('Heavy Rain Warning is not currently available. Please try again later. ('+xhttp.status+')');
-		}
+            if (xhttp.readyState == 4 && xhttp.status == 404) {
+                alert('Heavy Rain Warning is not currently available. Please try again later. ('+xhttp.status+')');
+            }
 	    }
 	}
   };
@@ -422,15 +424,15 @@ function loadHeavyRainWarningData(xml) {
     var warning = xmlDoc.getElementsByTagName('warning')[0].childNodes[0].nodeValue;
     
     if(warning!='NIL') {
-	var metadata = xmlDoc.getElementsByTagName('metadata')[0].childNodes[0].nodeValue;
-	var image = new Image();
-	image.src = 'data:image/png;base64,'+metadata;
-	document.body.appendChild(image);
-	
-	var metadata = xmlDoc.getElementsByTagName('metadata')[1].childNodes[0].nodeValue;
-	var image = new Image();
-	image.src = 'data:image/png;base64,'+metadata;
-	document.body.appendChild(image);
+        var metadata = xmlDoc.getElementsByTagName('metadata')[0].childNodes[0].nodeValue;
+        var image = new Image();
+        image.src = 'data:image/png;base64,'+metadata;
+        document.body.appendChild(image);
+        
+        metadata = xmlDoc.getElementsByTagName('metadata')[1].childNodes[0].nodeValue;
+        image = new Image();
+        image.src = 'data:image/png;base64,'+metadata;
+        document.body.appendChild(image);
     }
 
     loadLatestEarthquakeActivity();
@@ -460,18 +462,18 @@ function loadLatestEarthquakeActivity() {
 function loadLatestEarthquakeActivityData(xml) {
     var xmlDoc = xml.responseXML;
     var magnitude = xmlDoc.getElementsByTagName('magnitude')[0].childNodes[0].nodeValue;
-    var coordinate_of_epicenter = xmlDoc.getElementsByTagName('coordinate_of_epicenter')[0].childNodes[0].nodeValue;
+//    var coordinate_of_epicenter = xmlDoc.getElementsByTagName('coordinate_of_epicenter')[0].childNodes[0].nodeValue;
     
     if(magnitude!='NIL') {
-	var metadata = xmlDoc.getElementsByTagName('metadata')[0].childNodes[0].nodeValue;
-	var image = new Image();
-	image.src = 'data:image/png;base64,'+metadata;
-	document.body.appendChild(image);
-	
-	var metadata = xmlDoc.getElementsByTagName('metadata')[1].childNodes[0].nodeValue;
-	var image = new Image();
-	image.src = 'data:image/png;base64,'+metadata;
-	document.body.appendChild(image);
+        var metadata = xmlDoc.getElementsByTagName('metadata')[0].childNodes[0].nodeValue;
+        var image = new Image();
+        image.src = 'data:image/png;base64,'+metadata;
+        document.body.appendChild(image);
+        
+        metadata = xmlDoc.getElementsByTagName('metadata')[1].childNodes[0].nodeValue;
+        image = new Image();
+        image.src = 'data:image/png;base64,'+metadata;
+        document.body.appendChild(image);
     }
 
 }
@@ -485,8 +487,8 @@ function loadLatestEarthquakeActivityData(xml) {
 function filterMapLayer(filter) {
     $.each(map.markers, function () {
 	if (filter==this.filter) {
-	    if (this.map == null) {
-		this.setMap(map);
+	    if (this.map === null) {
+            this.setMap(map);
 	    }
 	} else {
 	    this.setMap(null);
@@ -511,12 +513,11 @@ function addMarker(latlng, title, forecast, filter) {
 
       var infowindow = new google.maps.InfoWindow();
       google.maps.event.addListener(marker, 'click', (function(marker) {
-	return function() {
-	  infowindow.setContent(this.content);
-	  infowindow.open(map, marker);
-	}
-      })(marker));   
-    
+        return function() {
+          infowindow.setContent(this.content);
+          infowindow.open(map, marker);
+        };
+      })(marker));
 }
 
 // Get the English description of the forecast and keep count of the forecasts used for later us in the legend
