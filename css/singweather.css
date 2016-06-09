@@ -96,11 +96,9 @@ html, body {
     -webkit-animation: pulsate 1.5s ease-in-out infinite;
     border:1pt solid #fff;
     /* make a circle */
-    -moz-border-radius:51px;
     -webkit-border-radius:51px;
     border-radius:51px;
     /* multiply the shadows, inside and outside the circle */
-    -moz-box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
     -webkit-box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
     box-shadow:inset 0 0 5px #06f, inset 0 0 5px #06f, inset 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f, 0 0 5px #06f;
     /* set the ring's new dimension and re-center it */
